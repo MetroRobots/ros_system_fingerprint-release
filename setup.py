@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
-from catkin_pkg.python_setup import generate_distutils_setup
+from setuptools import setup
 
-package_info = generate_distutils_setup(
+setup(
     packages=['system_fingerprint'],
     package_dir={'': 'src'},
+    data_files=[
+        ('share/system_fingerprint', ['package.xml']),
+        ('share/ament_index/resource_index/packages', ['resource/system_fingerprint']),
+    ],
+    version='0.6.0',
+    description='The system_fingerprint package',
+    license='BSD 2-clause',
+    maintainer='David V. Lu!!',
+    maintainer_email='davidvlu@gmail.com',
+    entry_points={'console_scripts': ['imprint = system_fingerprint.imprint:main']},
+    tests_require=['pytest'],
 )
-
-setup(**package_info)
